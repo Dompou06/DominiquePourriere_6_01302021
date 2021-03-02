@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "jest": "jest --verbose"
+    "start": "nodemon server",
+    "jest": "jest --verbose",
+    "lint": "eslint controllers models routes services tests --fix"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +18,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-standard": "^5.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
   }
 }
