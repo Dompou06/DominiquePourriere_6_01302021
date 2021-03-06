@@ -20,7 +20,7 @@ const normalizePort = val => {
   // Sinon, on retourne faux
   return false
 }
-// On crée une constante du port à écouter, celui dans .env ou par défault '3000' (généralement utilisé pour le développement)
+// On crée une constante du port du serveur écoutant, celui dans .env ou par défault '3000' (généralement utilisé pour le développement)
 const port = normalizePort(process.env.PORT || '3000')
 // On indique à l'application Express sur quel port, elle doit fonctionner
 app.set('port', port)

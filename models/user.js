@@ -1,4 +1,4 @@
-// Schéma mongoose pour créer ou ouvrir une session à un utilisateur
+// Schéma mongoose pour créer un compte ou ouvrir une session à un utilisateur
 const mongoose = require('mongoose')
 // On appelle le plugin qui vérifie si un champ à une donnée unique dans la BD (ici l'email)
 const uniqueValidator = require('mongoose-unique-validator')
