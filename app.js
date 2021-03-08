@@ -35,7 +35,7 @@ app.use(cors())
 app.use(helmet())
 // On transforme le corps des requêtes en objet JS
 // app.use(bodyParser.json())
-// On reconnaît l'objet de requête entrant sous forme de chaînes ou de tableaux (false), true si n'imprte quel tpe
+// On reconnaît l'objet de requête entrant sous forme de chaînes ou de tableaux (false), true si n'imprte quel type
 app.use(express.urlencoded({ extended: false }))
 // On ansalyse le json des requêtes (important pour POST et PUT)
 app.use(express.json())
