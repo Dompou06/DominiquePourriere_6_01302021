@@ -7,10 +7,12 @@ const app = express()
 const cors = require('cors')
 // On importe body-parser (analyse l'objet req.body, ses propriétés et contenu valides)
 // const bodyParser = require('body-parser')
-// Appel du module Helmet pour la création et la sécurisation des entêtes HTTP
-const helmet = require('helmet')
 // Appel du package Mongoose
 const mongoose = require('mongoose')
+// Appel du module Helmet pour la création et la sécurisation des entêtes HTTP
+const helmet = require('helmet')
+// Appel vers l'accès au chemin de fichiers (images)
+const path = require('path')
 // Intégration de dotenv pour la configuration des variables environnementales
 require('dotenv').config()
 // Intégration de la définition de l'état de la réponse ???
@@ -26,7 +28,7 @@ mongoose.connect(process.env.MONGO,
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'))
 // Appel des routes
-// const sauceRoutes = require('./routes/sauce')
+const sauceRoutes = require('./routes/sauce')
 const userRoutes = require('./routes/user')
 // On utilise la méthode use() pour exécuter une fonction
 // Implémentation de l'autorisation à notre seule appli à consulter les ressources
@@ -41,7 +43,11 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 // Pour les post des utilisateurs signup et login, en utilise la route indiqué dans routes/user.js
 app.use('/api/auth', userRoutes)
+// Indication du chemin vers le dossier images, en servant le dossier statique images
+app.use('/images', express.static(path.join(__dirname, 'images')))
 // On bloque touteq les routes qui n'ont pas été définies précédement
+// Pour les get, post... des sauces, on utilise la route sauce.js
+app.use('/api/sauces', sauceRoutes)
 app.get('*', (req, res) => {
   return res.status((httpStatus.NOT_FOUND).json({ error: 'Chemin invalide' }))
 })
