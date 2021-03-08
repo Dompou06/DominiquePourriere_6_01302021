@@ -3,6 +3,8 @@ const express = require('express')
 // On installe la collection de middlewares d'Express Helmet, qui définit les en-têtes HTTP liés à la sécurité
 // On crée une constante pour l'application Express
 const app = express()
+// On protège l'accès à l'appli des appels XHR (XMLHttpRequest) depuis une origine différente
+const cors = require('cors')
 // On importe body-parser (analyse l'objet req.body, ses propriétés et contenu valides)
 // const bodyParser = require('body-parser')
 // Appel du module Helmet pour la création et la sécurisation des entêtes HTTP
@@ -27,6 +29,8 @@ mongoose.connect(process.env.MONGO,
 // const sauceRoutes = require('./routes/sauce')
 const userRoutes = require('./routes/user')
 // On utilise la méthode use() pour exécuter une fonction
+// Implémentation de l'autorisation à notre seule appli à consulter les ressources
+app.use(cors())
 // Implémentation des configurations helmet dans les en-têtes HTTP (Cross Origin Resource Sharing (CORS))
 app.use(helmet())
 // On transforme le corps des requêtes en objet JS
