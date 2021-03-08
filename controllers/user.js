@@ -63,7 +63,7 @@ exports.login = (req, res) => {
               { userId: user._id },
               // On indique la clé secrète pour l'encodage, à complexifier pour la production
               process.env.TOKEN,
-              // On indique le délai d'expiration
+              // On indique le délai d'expiration 24 h pour le développement, plus court (1h) en production
               { expiresIn: '24h' }
             )
           })
