@@ -4,7 +4,7 @@ const httpStatus = require('http-status')
 // On appelle le module pour les fichiers a supprimé (image ici) inclus dans images du backend
 const fs = require('fs')
 // L'utilisateur crée une sauce
-exports.createSauce = (req, res, next) => {
+exports.createSauce = (req, res) => {
   // On récupère l'objet crée dans le front-end
   const sauceObject = JSON.parse(req.body.sauce)
   // On lui applique le schéma du modèle
@@ -25,7 +25,7 @@ exports.createSauce = (req, res, next) => {
     .catch(error => res.status(httpStatus.BAD_REQUEST).json({ error }))
 }
 // On sélectionne la sauce appelée par l'utilisateur
-exports.getOneSauce = (req, res, next) => {
+exports.getOneSauce = (req, res) => {
   // On utilise la méthode mongoose pour sélectionner dans la BD l'élément ayant le _id correspondant au id dans les paramètres envoyées dans la route
   Sauce.findOne({ _id: req.params.id })
     .then(
@@ -44,7 +44,7 @@ exports.getOneSauce = (req, res, next) => {
     )
 }
 // On modifie la sauce suivant les indication de l'utilisateur
-exports.modifySauce = (req, res, next) => {
+exports.modifySauce = (req, res) => {
   // On regarde s'il y a un fichier (image) dans la requête
   const sauceObject = req.file
   // Si true
@@ -69,7 +69,7 @@ exports.modifySauce = (req, res, next) => {
     )
 }
 // On supprime la sauce sélectionnée par l'utilisateur
-exports.deleteSauce = (req, res, next) => {
+exports.deleteSauce = (req, res) => {
   // On cherche la sauce ayant le id correspondant à un _id dans la BD
   Sauce.findOne({ _id: req.params.id })
     .then(sauce => {
@@ -106,14 +106,14 @@ exports.deleteSauce = (req, res, next) => {
       })
 }
 // On affiche toutes les sauces
-exports.getAllSauce = (req, res, next) => {
+exports.getAllSauce = (req, res) => {
   // On cherce les sauces
   Sauce.find()
     .then(sauces => res.status(httpStatus.OK).json(sauces))
     .catch(error => res.status(httpStatus.NOT_FOUND).json({ error }))
 }
 // On gère les likes et dislikes
-exports.likeSauce = async (req, res, next) => {
+exports.likeSauce = async (req, res) => {
   // On essaie de récupérer la sauce dans la BD en comparant de le id avec le _id
   try {
     const sauce = await Sauce.findOne({ _id: req.params.id })

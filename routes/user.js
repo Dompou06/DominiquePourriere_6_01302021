@@ -2,9 +2,9 @@ const express = require('express')
 // On appalle le middleware de niveau routeur, qui crée un objet routeur pour gérer les requêtes
 const router = express.Router()
 // On charge le middleware de vérification de l'email et password pour le signup
-const verifyEmailPassword = require('../services/verifyemailpassword')
+const verifyEmailPassword = require('../utils/verifyemailpassword')
 // On charge le controller pour le cryptage et le hashage
-const userCtrl = require('../controllers/user')
+const userCtrl = require('../src/controllers/user')
 // Appel de la librairie Express pour limiter les connexions avec login invalide pendant un temps
 const rateLimit = require('express-rate-limit')
 const limiter = rateLimit({

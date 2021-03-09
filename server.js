@@ -4,7 +4,7 @@ const http = require('http')
 // Intégration de dotenv pour la configuration des variables environnementales
 require('dotenv').config()
 // On importe l'application Express créée dans app.js
-const app = require('./app')
+const app = require('./src/app')
 // Fonction qui renvoie le port (numéro ou string)
 const normalizePort = val => {
 // Via parseInt(), on vérifie que val peut être converti en nombre, 10 renvoie la décimale de départ de la chaîne
