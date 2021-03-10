@@ -1,9 +1,9 @@
 const express = require('express')
 // On appelle la méthode Router d'Express
 const router = express.Router()
-const sauceCtrl = require('../src/controllers/sauce')
-const auth = require('../src/middleware/auth')
-const multer = require('../src/middleware/multer-config')
+const sauceCtrl = require('../controllers/sauce')
+const auth = require('../middleware/auth')
+const multer = require('../middleware/multer-config')
 // On protège les routes via le jeton d'authentification, en ajoutant le middleware auth
 // On vérifie que le fichier .env valide l'authenfication
 if (process.env.AUTH) {

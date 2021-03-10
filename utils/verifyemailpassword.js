@@ -4,15 +4,17 @@ const httpStatus = require('http-status')
 
 // Middleware qui analyse l'email et le password.
 module.exports = (req, res, next) => {
-  const error = checkSignUp(req.body.email, req.body.password)
-  if (error) {
+  const validate = checkSignUp(req.body.email, req.body.password)
+  if (!validate) {
     // Renvoie un statut NOT FOUND et me message d'erreur si au moins un n'est pas valide
-    return res.status(httpStatus.NOT_FOUND).json({ message: error.details[0].message })
+    return res.status(httpStatus.NOT_FOUND).json({ message: 'Inscription non valide' })
+    // return res.status(httpStatus.NOT_FOUND).json({ message: error.details[0].message })
   } else {
-    // Si valides, on continue
+    // Si valide, on continue
     next()
   }
 }
+
 /**
  * Check email & password
  * Définition du type, nom et description des paramètres utilisées dans la fonction checkSignUp

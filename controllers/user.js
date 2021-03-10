@@ -3,7 +3,7 @@ const User = require('../models/user')
 // Intégration de la définition de l'état de la réponse
 const httpStatus = require('http-status')
 // Appel du cryptage de l'email
-const emailCrypted = require('../../utils/utils')
+const emailCrypted = require('../utils/utils')
 // On ajoute une librairie pour le hashage du password au signup et sa comparaison avec un autre hash au login
 const bcrypt = require('bcrypt')
 // Création d'un token

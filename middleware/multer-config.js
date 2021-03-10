@@ -7,11 +7,11 @@ const MIME_TYPES = {
   'image/jpeg': 'jpg',
   'image/png': 'png'
 }
-// objet de configuration d'enregistrement du fichier dans le dossier images, via multer
+// objet de configuration d'enregistrement du fichier sur le disque dans le dossier images, via la fonction de multer
 const storage = multer.diskStorage({
-  // Indication de la destination
+  // Indication de la destination d'enregistrement du fichier
   destination: (req, file, callback) => {
-    // null pour pas d'erreur
+    // null pour pas d'erreur et nom du dossier
     callback(null, 'images')
   },
   // On donne un nouveau nom pour éviter les duppli de nom de fichier
@@ -37,5 +37,6 @@ const storage = multer.diskStorage({
     callback(null, name + Date.now() + '.' + extension)
   }
 })
+
 // On exporte l'action d'enregistrement du fichier en indiquant que c'est une image
 module.exports = multer({ storage }).single('image')

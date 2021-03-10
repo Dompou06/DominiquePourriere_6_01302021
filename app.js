@@ -28,8 +28,8 @@ mongoose.connect(process.env.MONGO,
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'))
 // Appel des routes
-const sauceRoutes = require('../routes/sauce')
-const userRoutes = require('../routes/user')
+const sauceRoutes = require('./routes/sauce')
+const userRoutes = require('./routes/user')
 // On utilise la méthode use() pour exécuter une fonction
 // Implémentation de l'autorisation à notre seule appli à consulter les ressources
 app.use(cors())
@@ -37,7 +37,7 @@ app.use(cors())
 app.use(helmet())
 // On transforme le corps des requêtes en objet JS
 app.use(bodyParser.json())
-// VSCode déprécie body-parser, on peut remplacer par
+// VSCode déprécie body-parser, on peut le remplacer par
 // On reconnaît l'objet de requête entrant sous forme de chaînes ou de tableaux (false), true si n'imprte quel type
 // app.use(express.urlencoded({ extended: false }))
 // On analyse le json des requêtes (important pour POST et PUT)
