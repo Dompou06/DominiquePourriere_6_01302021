@@ -3,7 +3,7 @@ const User = require('../models/user')
 // Intégration de la définition de l'état de la réponse
 const httpStatus = require('http-status')
 // Appel du cryptage de l'email
-const emailCrypted = require('../services/utils')
+const emailCrypted = require('../utils/utils')
 // On ajoute une librairie pour le hashage du password au signup et sa comparaison avec un autre hash au login
 const bcrypt = require('bcrypt')
 // Création d'un token
@@ -63,7 +63,7 @@ exports.login = (req, res) => {
               { userId: user._id },
               // On indique la clé secrète pour l'encodage, à complexifier pour la production
               process.env.TOKEN,
-              // On indique le délai d'expiration
+              // On indique le délai d'expiration 24 h pour le développement, plus court (1h) en production
               { expiresIn: '24h' }
             )
           })

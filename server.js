@@ -1,5 +1,5 @@
 /* eslint-disable no-unreachable */
-// Importation du package Node.js pour le traitement des requêtes et réponses HTTP
+// Importation du package Node.js pour la création du serveur qui traitera les requêtes et réponses HTTP
 const http = require('http')
 // Intégration de dotenv pour la configuration des variables environnementales
 require('dotenv').config()
