@@ -34,7 +34,6 @@ exports.getOneSauce = (req, res) => {
         res.status(httpStatus.OK).json(sauce)
       })
     .catch(
-
       (error) => {
       // Le id ne correspond pas à un _id de la BD
         res.status(httpStatus.NOT_FOUND).json({

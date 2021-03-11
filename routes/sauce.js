@@ -7,7 +7,7 @@ const multer = require('../middleware/multer-config')
 // On protège les routes via le jeton d'authentification, en ajoutant le middleware auth
 // On vérifie que le fichier .env valide l'authenfication
 if (process.env.AUTH) {
-  // On passe les chemins caractéristiques aux actions, l'authentification du jeton, les traitements de ficiers si besoin et l'action spécifique sur la ou les sauces
+  // On passe les chemins caractéristiques aux actions, l'authentification du jeton, les traitements de fichiers si besoin et l'action spécifique sur la ou les sauces
   router.post('/', auth, multer, sauceCtrl.createSauce)
   router.get('/:id', auth, sauceCtrl.getOneSauce)
   router.put('/:id', auth, multer, sauceCtrl.modifySauce)

@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const httpStatus = require('http-status')
 module.exports = (req, res, next) => {
   try {
-    // On récupère le token de l'utilisateur créé dans le connrtollers user.js et contenu le header (HTTP) d'autorisation (après l'espace qui suit Bearer)
+    // On récupère le token de l'utilisateur créé dans le controllers user.js et contenu le header (HTTP) d'autorisation (après l'espace qui suit Bearer)
     const token = req.headers.authorization.split(' ')[1]
     // On décode le token obtenu avec la clé de token
     const decodedToken = jwt.verify(token, process.env.TOKEN)

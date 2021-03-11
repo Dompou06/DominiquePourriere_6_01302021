@@ -7,7 +7,7 @@ const app = express()
 const cors = require('cors')
 // On importe body-parser (analyse l'objet req.body, ses propriétés et contenu valides)
 const bodyParser = require('body-parser')
-// Appel du package Mongoose
+// Appel du package Mongoose, qui donne accès la BD Mongo Atlas
 const mongoose = require('mongoose')
 // Appel du module Helmet pour la création et la sécurisation des entêtes HTTP
 const helmet = require('helmet')
@@ -21,6 +21,7 @@ const httpStatus = require('http-status')
 // Connection à la base Mongo Atlas pour la collection
 mongoose.connect(process.env.MONGO,
   {
+    // correcteurs d'avertissements d'obsolescence
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true

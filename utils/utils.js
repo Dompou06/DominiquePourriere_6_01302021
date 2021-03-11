@@ -7,7 +7,7 @@ const algorithm = 'aes-192-cbc'
 const keyCrypt = process.env.CRYPT
 // Le sel permet de ne pas générer toujours la même clé via le salage
 const key = crypto.scryptSync(keyCrypt, 'salt', 24)
-// objet tampon de la taille spécifiée 16, valeur pour remplir 8 pour agrantir un chiffrement différent
+// objet tampon de la taille spécifiée 16, valeur pour remplir 8 pour garantir un chiffrement différent
 const iv = Buffer.alloc(16, 8)
 // On crée un chiffrage via l'algorithm ,la clé et le iv
 exports.encrypt = (text) => {

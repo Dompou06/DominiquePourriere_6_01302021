@@ -22,7 +22,7 @@ const normalizePort = val => {
 }
 // On crée une constante du port du serveur écoutant, celui dans .env ou par défault '3000' (généralement utilisé pour le développement)
 const port = normalizePort(process.env.PORT || '3000')
-// On indique à l'application Express sur quel port, elle doit fonctionner
+// On indique au framework Express sur quel port, il doit fonctionner
 app.set('port', port)
 // On crée une conqtante pour les erreurs
 const errorHandler = error => {
@@ -44,7 +44,7 @@ const errorHandler = error => {
       throw error
   }
 }
-// On crée un serveur qui prendra en argument la fonction de l'application Express, qui recevra la requête et la réponse, appelée pour chaque requête
+// On crée un serveur qui prendra en argument la fonction du framework Express, qui recevra la requête et la réponse, appelée pour chaque requête front-end
 const server = http.createServer(app)
 // Si erreur, on la renvoie
 server.on('error', errorHandler)
