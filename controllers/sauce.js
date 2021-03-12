@@ -77,9 +77,14 @@ exports.deleteSauce = (req, res) => {
       // et avec la méthode split() on le divise en deux jusqu'à images/ et on ne garde que ce qui suit
       // c'est-à-dire le nom du fichier qui se trouve dans dossier images
       const filename = sauce.imageUrl.split('images/')[1]
+      /* let image
+      if (filename !== 'no_image.jpg') {
+        image = `images/${filename}`
+      } else { image = '' } */
       // On utilise la méthode native de gestion de fichier de Node.js (fs)
       // On supprime le fichier image du répertoire grâce à fonction .unlink() de fs
       fs.unlink(`images/${filename}`, () => {
+        // fs.unlink(image, () => {
         // On supprime l'élément de BD ayant le id correspondant au _id
         Sauce.deleteOne({ _id: req.params.id })
           .then(() => {

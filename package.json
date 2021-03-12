@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon server",
     "jest": "jest --verbose",
-    "lint": "eslint controllers models routes --fix"
+    "lint": "eslint controllers models routes middleware --fix"
   },
   "author": "",
   "license": "ISC",
